@@ -1,0 +1,19 @@
+.filter-box {
+  padding-left: 130px;
+}
+
+.filter-box button {
+  border: none;
+  background: none;
+  border-bottom: 1px dashed;
+  color: green;
+  font-size: 10px;
+  margin-right: 10px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.filter-box button:hover {
+  border-bottom: 1px solid;
+  color: blue;
+}
