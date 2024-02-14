@@ -149,9 +149,3 @@ export default function Actor() {
     </>
   );
 }
-
-/*
-            {
-              id: 1158,
-              name: "Al Pacino",
-*/
