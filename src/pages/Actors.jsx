@@ -28,8 +28,6 @@ export default function Actors() {
     loadData();
   }, []);
 
-  // derived state
-
   function createFilterList(propName) {
     return characters.reduce((acc, cur) => {
       if (!cur[propName]) return acc;
@@ -40,6 +38,8 @@ export default function Actors() {
       }
     }, []);
   }
+
+  // derived state
 
   const charactersToDisplay = characters.filter((character) => {
     const houseMatch =
