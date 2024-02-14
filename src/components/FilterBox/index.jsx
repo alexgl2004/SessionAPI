@@ -1,5 +1,6 @@
 import styles from "./FilterBox.module.css";
 
+// FilterBox Props:
 // boxStyle: "linklist" or "select"
 // data: [{key:"gryffindor", value:"Gryffindor"}]
 // onFilterChange: (key)=>{}

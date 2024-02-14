@@ -51,18 +51,20 @@ export default function Actors() {
           />
           <FilterBox
             boxStyle="linklist"
-            data={createFilterList("house").map((house) => {
-              return { key: house, value: house };
-            })}
+            data={createFilterList("house").map((house) => ({
+              key: house,
+              value: house,
+            }))}
             onFilterChange={(key) => {
               setSelectedHouse(key || "");
             }}
           />
           <FilterBox
             boxStyle="select"
-            data={createFilterList("species").map((item) => {
-              return { key: item, value: item };
-            })}
+            data={createFilterList("species").map((item) => ({
+              key: item,
+              value: item,
+            }))}
             onFilterChange={(key) => {
               setSelectedSpecies(key || "");
             }}
