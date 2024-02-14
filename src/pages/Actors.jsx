@@ -13,12 +13,11 @@ export default function Actors() {
   useEffect(() => {
     async function loadData() {
       try {
-        const response = await axios.get(
+        const { data } = await axios.get(
           "https://hp-api.onrender.com/api/characters"
         );
-        console.log(response.data);
         setCharacters(
-          response.data.filter((character) => (character.actor ? true : false))
+          data.filter((character) => (character.actor ? true : false))
         );
       } catch (error) {
         console.log(error);
@@ -29,26 +28,14 @@ export default function Actors() {
   }, []);
 
   function createFilterList(propName) {
-    return characters.reduce((acc, cur) => {
-      if (!cur[propName]) return acc;
-      if (acc.find((value) => cur[propName] === value)) {
-        return acc;
-      } else {
-        return [...acc, cur[propName]];
-      }
-    }, []);
+    return Array.from(
+      new Set(
+        characters
+          .filter((character) => character[propName])
+          .map((character) => character[propName])
+      )
+    );
   }
-
-  // derived state
-
-  const charactersToDisplay = characters.filter((character) => {
-    const houseMatch =
-      !selectedHouse ||
-      character.house.toUpperCase().indexOf(selectedHouse.toUpperCase()) !== -1;
-    const speciesMatch =
-      !selectedSpecies || character.species === selectedSpecies;
-    return speciesMatch && houseMatch;
-  });
 
   return (
     <>
@@ -57,7 +44,7 @@ export default function Actors() {
         <div className="Searches">
           <input
             type="text"
-            value={selectedHouse}
+            value={selectedHouse || ""}
             onChange={(event) => {
               setSelectedHouse(event.target.value);
             }}
@@ -68,23 +55,33 @@ export default function Actors() {
               return { key: house, value: house };
             })}
             onFilterChange={(key) => {
-              setSelectedHouse(key);
+              setSelectedHouse(key || "");
             }}
           />
-
           <FilterBox
             boxStyle="select"
             data={createFilterList("species").map((item) => {
               return { key: item, value: item };
             })}
             onFilterChange={(key) => {
-              setSelectedSpecies(key);
+              setSelectedSpecies(key || "");
             }}
           />
         </div>
         <ul className="Actors">
-          {charactersToDisplay.map((character) => (
-            <>
+          {characters
+            .filter(
+              (character) =>
+                !selectedHouse ||
+                character.house
+                  .toUpperCase()
+                  .startsWith(selectedHouse.toUpperCase())
+            )
+            .filter(
+              (character) =>
+                !selectedSpecies || character.species === selectedSpecies
+            )
+            .map((character) => (
               <li key={character.id}>
                 <Link className="actor_a" to={"/characters/" + character.id}>
                   <div className="actors_block">
@@ -105,8 +102,7 @@ export default function Actors() {
                   </div>
                 </Link>
               </li>
-            </>
-          ))}
+            ))}
         </ul>
       </div>
     </>
