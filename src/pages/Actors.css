@@ -1,0 +1,97 @@
+ul.Actors{
+    display: flex;
+    padding:20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+    ul.Actors *{
+        line-height: 1;
+    }
+
+    .Actors > li{
+        min-width: 200px;
+        max-width: 300px;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 1px dotted #333;
+        padding-bottom:10px;
+        line-height: 1;
+    }
+
+        .Actors .movie_block{
+            display: flex;
+            text-align: left;
+            position:relative;
+            z-index: 1;
+        }
+
+        .Actors .movie_about{
+            padding-left:20px;
+            line-height: 1;
+         }
+
+         .Actors .movie_about h3{
+            margin-top:0;
+            padding-top:0;
+            margin-bottom: 0;
+            color:green;
+         }
+
+         .Actors .movie_about em{
+            font-size: 10px;
+         }
+
+         .Actors .actor_img{
+            max-width: 180px;
+            height:180px;
+            overflow: hidden;
+         }
+
+         .Actors .actor_img img{
+            max-width: 100%;
+         }
+
+         .Actors .actor_about small{
+            font-size: 9px;
+            color:#333;
+         }         
+
+         .Actors .showMore{
+            position:absolute;
+            z-index: 1;
+            font-size: 10px;
+            right:0;
+            bottom:0;
+            color:green;
+         }
+
+         .actors_block{
+            max-width: 180px;
+         }    
+
+         .search_help_buttons{
+            padding-left:130px;
+         }
+
+          .search_help_buttons button{
+            border:none;
+            background: none;
+            border-bottom:1px dashed;
+            color:green;
+            font-size: 10px;
+            margin-right:10px;
+            line-height: 1;
+            cursor: pointer;
+          }
+
+          .search_help_buttons button:hover{
+            border-bottom:1px solid;
+            color:blue;
+          }
+
+          .label_search{
+            margin-left:10px;
+          }
+
+ 

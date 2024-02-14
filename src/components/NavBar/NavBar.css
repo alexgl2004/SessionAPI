@@ -1,0 +1,42 @@
+header{
+  position:relative;
+  z-index: 100;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  padding: 1em;
+}
+
+.navbar .logo a {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--color-light);
+  text-decoration: none;
+}
+
+.navbar .menu ul {
+  display: flex;
+  gap: 1em;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .menu a {
+  color: var(--color-light);
+  text-decoration: none;
+  padding: 0.5em;
+}
+
+.navbar .menu li a.active{
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-radius: 5px;
+}
